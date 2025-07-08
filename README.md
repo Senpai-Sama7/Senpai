@@ -1,4 +1,3 @@
-Here's a complete README.md draft for your repo, incorporating your content and polishing/expanding it to better reflect the project based on your tech stack and intent:
 
 ---
 
