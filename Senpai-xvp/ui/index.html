@@ -1,2 +1,245 @@
-<h1>Senpai-xvp UI Placeholder</h1>
-<p>This is a placeholder for the UI.  A real UI would be built with React, Svelte, or similar.</p>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Senpai-xvp UI</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        form {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input[type="text"] {
+            width: 300px;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+         select {
+            width: 300px;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #3e8e41;
+        }
+        #agent-logs {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-bottom: 20px;
+            height: 200px;
+            overflow-y: scroll;
+        }
+        #agent-logs p {
+            margin: 5px 0;
+        }
+        #task-plan {
+            margin-top: 20px;
+            border: 1px solid #ccc;
+            padding: 10px;
+        }
+        #task-plan h3 {
+            margin-top: 0;
+        }
+        #task-plan ul {
+            padding-left: 20px;
+        }
+
+        /* Add a container for controls */
+        #agent-controls {
+            margin-bottom: 20px;
+        }
+
+        #agent-controls button {
+            margin-right: 10px;
+        }
+    </style>
+    <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+
+      function TaskInput({ onSubmit }) {
+        const [taskDescription, setTaskDescription] = React.useState('');
+          const [templateName, setTemplateName] = React.useState('default_template.json');
+
+        const handleSubmit = (event) => {
+          event.preventDefault();
+          onSubmit({ description: taskDescription, templateName: templateName });
+        };
+
+        return (
+          <form onSubmit={handleSubmit}>
+            <label htmlFor="taskDescription">Task Description:</label>
+            <input
+              type="text"
+              id="taskDescription"
+              value={taskDescription}
+              onChange={(e) => setTaskDescription(e.target.value)}
+            />
+             <label htmlFor="templateName">Task Template:</label>
+              <select
+                id="templateName"
+                value={templateName}
+                onChange={(e) => setTemplateName(e.target.value)}
+              >
+                <option value="default_template.json">Default Plan</option>
+                <option value="template1.json">Template 1</option>
+                <option value="template2.json">Template 2</option>
+              </select>
+            <button type="submit">Submit Task</button>
+          </form>
+        );
+      }
+
+      function AgentControls({ session, onStart, onStop, onRecord }) {
+          const handleRecord = () => {
+              //Placeholder. This is needed to get all actions.
+              alert('Recording Started!');
+              onRecord();
+          }
+        return (
+          <div>
+            <h2>Agent Controls</h2>
+            <p>Session ID: {session ? session.session_id : 'N/A'}</p>
+            <button onClick={onStart} disabled={session && session.is_running}>
+              Start
+            </button>
+            <button onClick={onStop} disabled={!session || !session.is_running}>
+              Stop
+            </button>
+             <button onClick={handleRecord} disabled={!session || session.is_running}>
+              Record
+            </button>
+          </div>
+        );
+      }
+
+      function LogsDisplay({ session }) {
+        const [logs, setLogs] = React.useState([]);
+
+        React.useEffect(() => {
+          if (!session) return;
+
+          const fetchLogs = async () => {
+            const response = await fetch(`/logs/?session_id=${session.session_id}`);
+            const data = await response.json();
+            setLogs(data);
+          };
+
+          fetchLogs();
+          const intervalId = setInterval(fetchLogs, 5000);
+
+          return () => clearInterval(intervalId);
+        }, [session]);
+
+        return (
+          <div>
+            <h2>Agent Logs</h2>
+            <div style={{ height: '200px', overflowY: 'scroll', border: '1px solid #ccc', padding: '10px' }}>
+              {logs.map((log) => (
+                <p key={log.id}>{log.timestamp} - {log.message}</p>
+              ))}
+            </div>
+          </div>
+        );
+      }
+
+       function TaskPlan({ plan }) {
+        return (
+             <div>
+                <h2>Task Plan</h2>
+                  <ul>
+                  {plan && plan.map((step, index) => (
+                    <li key={index}>{step}</li>
+                  ))}
+                </ul>
+            </div>
+        );
+      }
+
+      function App() {
+        const [session, setSession] = React.useState(null);
+        const [taskPlan, setTaskPlan] = React.useState([]);
+        const [isRecording, setIsRecording] = React.useState(false);
+        const [recordedActions, setRecordedActions] = React.useState([]);
+
+        const handleTaskSubmit = async (task) => {
+          const response = await fetch('/agent/start', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(task),
+          });
+          const data = await response.json();
+          setSession({ session_id: data.session_id, is_running: true });
+          setTaskPlan(data.plan);
+        };
+
+        const handleAgentStart = async () => {
+            // Implement the start logic here.
+            // You will need to call your /agent/start endpoint again, perhaps with the same task description.
+            // For simplicity, I am just setting the session to running again
+            setSession({ ...session, is_running: true });
+        }
+
+        const handleAgentStop = async () => {
+          await fetch(`/agent/stop?session_id=${session.session_id}`, {
+            method: 'POST',
+          });
+          setSession({ ...session, is_running: false });
+        };
+
+          const handleRecord = () => {
+            setIsRecording(true);
+            setRecordedActions([]); // Clear any previous recordings
+          };
+
+        return (
+          <div>
+            <h1>Senpai-xvp UI</h1>
+            <TaskInput onSubmit={handleTaskSubmit} />
+            {session && (
+              <AgentControls
+                session={session}
+                onStart={handleAgentStart}
+                onStop={handleAgentStop}
+                  onRecord={handleRecord}
+              />
+            )}
+            <LogsDisplay session={session} />
+             {taskPlan && (
+              <TaskPlan plan={taskPlan} />
+             )}
+          </div>
+        );
+      }
+
+      ReactDOM.render(<App />, document.getElementById('root'));
+    </script>
+</body>
+</html>

@@ -5,3 +5,7 @@ opencv-python
 pytesseract
 python-dotenv
 openai
+Pillow
+fastapi-middleware
+requests  # For making HTTP requests (e.g., to Firebase)
+SQLAlchemy
