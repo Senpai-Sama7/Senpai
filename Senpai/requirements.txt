@@ -1,5 +1,0 @@
-selenium
-openai
-pytesseract
-pillow
-flask
