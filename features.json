@@ -1,0 +1,83 @@
+[
+  {
+    "id": "F1",
+    "feature": "Prev/Next buttons update the page canvas",
+    "command": "Manual: open index.html in a browser, click #next, observe the page counter",
+    "expected": "Counter changes to 2 / 9 and canvas redraws for the next dataset",
+    "status": "UNVERIFIED",
+    "evidence": null,
+    "notes": "Requires interactive browser session; not executed in container"
+  },
+  {
+    "id": "F2",
+    "feature": "Keyboard arrow keys navigate between pages",
+    "command": "Manual: with canvas focused, press ArrowRight",
+    "expected": "Same state change as clicking Next",
+    "status": "UNVERIFIED",
+    "evidence": null,
+    "notes": "Needs DOM event loop"
+  },
+  {
+    "id": "F3",
+    "feature": "Go-to input jumps to specified slide",
+    "command": "Manual: type 5 in #go input and press enter",
+    "expected": "Indicator updates to 5 / 9 and monetization slide renders",
+    "status": "UNVERIFIED",
+    "evidence": null,
+    "notes": "Requires browser input handling"
+  },
+  {
+    "id": "F4",
+    "feature": "Save PNG downloads the rendered canvas",
+    "command": "Manual: click #save",
+    "expected": "PNG file download begins with filename tiktok-<n>.png",
+    "status": "UNVERIFIED",
+    "evidence": null,
+    "notes": "Needs browser download context"
+  },
+  {
+    "id": "F5",
+    "feature": "Copy button writes PNG to clipboard",
+    "command": "Manual: click #copy in supported browser",
+    "expected": "Clipboard contains image/png data and button label flashes 'Copied'",
+    "status": "UNVERIFIED",
+    "evidence": null,
+    "notes": "Clipboard API unavailable in container"
+  },
+  {
+    "id": "F6",
+    "feature": "Index overlay toggles and selecting an item navigates",
+    "command": "Manual: click #indexBtn then choose a thumbnail",
+    "expected": "Overlay closes and canvas jumps to selected slide",
+    "status": "UNVERIFIED",
+    "evidence": null,
+    "notes": "Grid rendering requires browser"
+  },
+  {
+    "id": "F7",
+    "feature": "Search field filters index entries",
+    "command": "Manual: open index overlay, type 'SEO' in #q",
+    "expected": "Only matching entries remain and show '— match' suffix",
+    "status": "UNVERIFIED",
+    "evidence": null,
+    "notes": "Text filtering occurs in DOM"
+  },
+  {
+    "id": "F8",
+    "feature": "Progress bar fill reflects navigation state",
+    "command": "Manual: click Next until final slide",
+    "expected": "#fill width grows to 100% on last page",
+    "status": "UNVERIFIED",
+    "evidence": null,
+    "notes": "Visual measurement requires browser"
+  },
+  {
+    "id": "F9",
+    "feature": "Pointer swipe gestures change slides",
+    "command": "Manual: drag pointer left/right across canvas",
+    "expected": "Swiping left shows previous slide, right shows next",
+    "status": "UNVERIFIED",
+    "evidence": null,
+    "notes": "Touch/pointer events not simulated here"
+  }
+]

@@ -1,0 +1,877 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Master TikTok 2025 — Immersive Canvas</title>
+<meta name="color-scheme" content="dark light">
+<style>
+  :root{
+    --bg:#0b0f1a; --bg2:#0e1324; --ink:#e9ecf1; --mid:#c8cfda;
+    --accent:#7ad2ff; --accent2:#9b8cff; --glass:rgba(255,255,255,.07);
+    --stroke:rgba(255,255,255,.12); --shadow:rgba(8,12,22,.75);
+    --glow:rgba(122,210,255,.22);
+  }
+  *{box-sizing:border-box}
+  html,body{height:100%;margin:0;background:radial-gradient(1000px 700px at 20% 0%,#101936 0%,#0b0f1a 55%,#09101c 100%);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Inter","Segoe UI",Roboto,Arial,sans-serif}
+  
+  /* Improved mobile responsiveness */
+  .top{
+    position:fixed;
+    inset:0 0 auto 0;
+    height:70px;
+    display:flex;
+    gap:12px;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 16px;
+    background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.02));
+    backdrop-filter:saturate(140%) blur(14px);
+    border-bottom:1px solid var(--stroke);
+    z-index:3;
+    flex-wrap: wrap;
+    min-height: 70px;
+  }
+  
+  .brand{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    font-weight:800;
+    letter-spacing:.2px;
+    font-size: 14px;
+  }
+  
+  .dot{
+    width:14px;
+    height:14px;
+    border-radius:10px;
+    background:linear-gradient(145deg,#86ddff,#6bd0ff 60%,#c7f2ff);
+    box-shadow:inset 2px 2px 5px rgba(255,255,255,.35), 0 6px 16px var(--glow)
+  }
+  
+  .controls{
+    display:flex;
+    gap:8px;
+    align-items:center;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+  
+  .btn{
+    appearance:none;
+    border:none;
+    outline:0;
+    background:linear-gradient(180deg,rgba(255,255,255,.12),rgba(255,255,255,.02));
+    color:var(--ink);
+    border:1px solid var(--stroke);
+    border-radius:14px;
+    padding:10px 14px;
+    cursor:pointer;
+    box-shadow: 8px 8px 18px var(--shadow), inset 2px 2px 6px rgba(255,255,255,.08), inset -2px -2px 6px rgba(0,0,0,.25);
+    font-size: 12px;
+    white-space: nowrap;
+  }
+  
+  .btn:hover{
+    transform:translateY(-1px);
+    background:linear-gradient(180deg,rgba(255,255,255,.16),rgba(255,255,255,.04))
+  }
+  
+  .btn:active{transform:translateY(0)}
+  
+  .chip{
+    font-size:12px;
+    opacity:.9;
+    padding:8px 10px;
+    border:1px solid var(--stroke);
+    border-radius:12px;
+    background:var(--glass);
+    width: auto;
+  }
+  
+  .wrap{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    height:100%;
+    padding: 80px 16px 60px;
+  }
+  
+  canvas{
+    width:100%;
+    max-width:1280px;
+    height:100%;
+    max-height:760px;
+    border-radius:22px;
+    box-shadow: 24px 28px 60px rgba(0,0,0,.45), inset 6px 6px 16px rgba(0,0,0,.45), inset -6px -6px 16px rgba(255,255,255,.06);
+    background:linear-gradient(160deg,#0f1424 0%,#0a0f1a 100%);
+    border:1px solid rgba(255,255,255,.08)
+  }
+  
+  .foot{
+    position:fixed;
+    inset:auto 0 10px 0;
+    display:flex;
+    justify-content:center;
+    z-index:2;
+    padding: 0 16px;
+  }
+  
+  .bar{
+    width:100%;
+    max-width:1280px;
+    height:8px;
+    background:rgba(255,255,255,.06);
+    border-radius:999px;
+    border:1px solid var(--stroke);
+    overflow:hidden
+  }
+  
+  .fill{
+    height:100%;
+    width:0;
+    background:linear-gradient(90deg,var(--accent),var(--accent2));
+    box-shadow:0 0 18px var(--glow)
+  }
+  
+  .index{
+    position:fixed;
+    inset:80px 16px 80px 16px;
+    display:none;
+    grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+    gap:14px;
+    z-index:4;
+    overflow-y: auto;
+    background: var(--bg);
+    border-radius: 16px;
+    padding: 20px;
+    border: 1px solid var(--stroke);
+    backdrop-filter: blur(10px);
+  }
+  
+  .thumb{
+    border-radius:16px;
+    border:1px solid var(--stroke);
+    background:var(--glass);
+    padding:12px;
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+    cursor:pointer;
+    box-shadow:8px 12px 28px var(--shadow);
+    transition: all 0.3s ease;
+  }
+  
+  .thumb:hover{
+    outline:2px solid var(--accent);
+    outline-offset:2px;
+    transform: translateY(-2px);
+  }
+  
+  .thumb h4{
+    margin:0;
+    font-size:14px;
+    color: var(--ink);
+  }
+  
+  .thumb p{
+    margin:0;
+    font-size:12px;
+    opacity:.8;
+  }
+  
+  .search{
+    min-width:260px;
+    width: 100%;
+    max-width: 300px;
+  }
+  
+  /* Mobile-specific adjustments */
+  @media (max-width: 768px) {
+    .top {
+      height: auto;
+      padding: 10px;
+      gap: 8px;
+    }
+    
+    .brand {
+      font-size: 12px;
+    }
+    
+    .controls {
+      gap: 6px;
+    }
+    
+    .btn {
+      padding: 8px 10px;
+      font-size: 11px;
+    }
+    
+    .chip {
+      padding: 6px 8px;
+      font-size: 11px;
+    }
+    
+    .wrap {
+      padding: 100px 12px 50px;
+    }
+    
+    .index {
+      inset: 100px 12px 60px 12px;
+    }
+    
+    .search {
+      min-width: 200px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .top {
+      flex-direction: column;
+      height: auto;
+      gap: 10px;
+    }
+    
+    .brand {
+      justify-content: center;
+      width: 100%;
+    }
+    
+    .controls {
+      justify-content: center;
+      width: 100%;
+    }
+    
+    .btn {
+      padding: 6px 8px;
+      font-size: 10px;
+    }
+    
+    .chip {
+      padding: 4px 6px;
+      font-size: 10px;
+    }
+    
+    .wrap {
+      padding: 120px 8px 40px;
+    }
+    
+    .index {
+      inset: 120px 8px 40px 8px;
+      grid-template-columns: 1fr;
+    }
+    
+    .search {
+      min-width: 150px;
+    }
+  }
+
+  @media (prefers-reduced-motion:no-preference){
+    .aurora{
+      position:fixed;
+      inset:-20vmax;
+      pointer-events:none;
+      background:
+        radial-gradient(35vmax 35vmax at 20% 10%, rgba(155,140,255,.10), transparent 60%),
+        radial-gradient(40vmax 40vmax at 80% 0%, rgba(122,210,255,.10), transparent 60%),
+        radial-gradient(30vmax 30vmax at 60% 90%, rgba(255,160,180,.08), transparent 55%);
+      filter:blur(40px);
+      animation:f 22s ease-in-out infinite alternate
+    }
+    @keyframes f{
+      0%{transform:translateY(-2%) rotate(0)}
+      100%{transform:translateY(2%) rotate(2deg)}
+    }
+  }
+</style>
+</head>
+<body>
+  <div class="aurora"></div>
+  <div class="top" role="banner">
+    <div class="brand"><div class="dot" aria-hidden="true"></div><div>Master TikTok 2025 — Immersive</div></div>
+    <div class="controls" role="toolbar" aria-label="Viewer controls">
+      <button class="btn" id="prev" title="Previous (←)">← Prev</button>
+      <button class="btn" id="next" title="Next (→)">Next →</button>
+      <span class="chip" id="pnum">1 / 10</span>
+      <input id="go" class="chip" type="number" min="1" step="1" style="width:84px" title="Go to page"/>
+      <button class="btn" id="save" title="Save current page as PNG">Save PNG</button>
+      <button class="btn" id="copy" title="Copy current page PNG to clipboard">Copy</button>
+      <button class="btn" id="indexBtn" title="Toggle index (I)">Index</button>
+      <input id="q" class="chip search" placeholder="Search pages… (/)"/>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <canvas id="cv" width="1280" height="760" role="img" aria-label="TikTok strategy canvas"></canvas>
+  </div>
+
+  <div class="foot"><div class="bar" aria-hidden="true"><div class="fill" id="fill"></div></div></div>
+
+  <div class="index" id="index"></div>
+
+<script>
+/* High-DPI canvas setup */
+const cv = document.getElementById('cv');
+const ctx = cv.getContext('2d');
+
+// Responsive scaling factor
+function getScaleFactor() {
+  const baseWidth = 1280;
+  const currentWidth = cv.clientWidth;
+  return Math.max(0.5, Math.min(1, currentWidth / baseWidth));
+}
+
+function fitDPI(){
+  const ratio = Math.max(1, Math.min(2, window.devicePixelRatio||1));
+  const cssW = cv.clientWidth, cssH = cv.clientHeight;
+  cv.width = Math.round(cssW*ratio);
+  cv.height = Math.round(cssH*ratio);
+  ctx.setTransform(ratio,0,0,ratio,0,0); // UI units = CSS pixels
+}
+fitDPI(); 
+addEventListener('resize', fitDPI);
+
+/* Theme */
+const theme = {
+  bg1:'#0a0f1a', bg2:'#101936', panel:'#121a2e',
+  ink:getComputedStyle(document.documentElement).getPropertyValue('--ink').trim()||'#e9ecf1',
+  mid:'rgba(233,236,241,.78)', faint:'rgba(233,236,241,.58)'
+};
+
+/* Clay panel helper */
+function clayPanel(x,y,w,h,r=20){
+  const scale = getScaleFactor();
+  r *= scale;
+  
+  const grd = ctx.createLinearGradient(x,y,x,y+h);
+  grd.addColorStop(0,'rgba(255,255,255,.06)'); 
+  grd.addColorStop(1,'rgba(0,0,0,.18)');
+  ctx.fillStyle = grd; 
+  roundRect(x,y,w,h,r,true,false);
+  
+  // inner & outer highlights for clay feel
+  ctx.strokeStyle='rgba(255,255,255,.08)'; 
+  ctx.lineWidth=1.2*scale; 
+  roundRect(x+.6*scale,y+.6*scale,w-1.2*scale,h-1.2*scale,r,true,true);
+  
+  ctx.shadowColor='rgba(0,0,0,.45)'; 
+  ctx.shadowBlur=28*scale; 
+  ctx.shadowOffsetY=18*scale;
+  ctx.fillStyle='rgba(0,0,0,0)'; 
+  roundRect(x,y,w,h,r,true,false);
+  ctx.shadowColor='transparent';
+}
+
+function roundRect(x,y,w,h,r,fill,stroke){
+  ctx.beginPath();
+  ctx.moveTo(x+r,y);
+  ctx.arcTo(x+w,y,x+w,y+h,r);
+  ctx.arcTo(x+w,y+h,x,y+h,r);
+  ctx.arcTo(x,y+h,x,y,r);
+  ctx.arcTo(x,y,x+w,y,r);
+  ctx.closePath();
+  if(fill) ctx.fill();
+  if(stroke){ ctx.stroke(); }
+}
+
+/* Responsive Typography */
+function title(t, x, y, size=42){ 
+  const scale = getScaleFactor();
+  size *= scale;
+  ctx.fillStyle=theme.ink; 
+  ctx.font = '800 '+size+'px system-ui, Inter, sans-serif'; 
+  ctx.fillText(t,x,y); 
+}
+
+function h2(t, x, y){ 
+  const scale = getScaleFactor();
+  const size = 24 * scale;
+  ctx.fillStyle=theme.ink; 
+  ctx.font='700 '+size+'px system-ui, Inter, sans-serif'; 
+  ctx.fillText(t,x,y); 
+}
+
+function drawParagraph(text, x, y, maxW=560, lineH=26, size=16, color=theme.mid){
+  const scale = getScaleFactor();
+  const scaledSize = size * scale;
+  const scaledMaxW = maxW * scale;
+  const scaledLineH = lineH * scale;
+  ctx.fillStyle=color; 
+  ctx.font=scaledSize+'px system-ui, Inter, sans-serif';
+  wrapText(text,x,y,scaledMaxW,scaledLineH);
+}
+
+function bullets(arr,x,y,maxW=560,lineH=24){ 
+  const scale = getScaleFactor();
+  const size = 16 * scale;
+  maxW *= scale;
+  lineH *= scale;
+  ctx.fillStyle=theme.mid; 
+  ctx.font=size+'px system-ui, Inter, sans-serif';
+  let yy=y;
+  for(const s of arr){
+    ctx.fillText('•', x, yy);
+    wrapText(s, x+16*scale, yy, maxW, lineH);
+    const lines = Math.ceil(ctx.measureText(s).width/maxW);
+    yy += lineH + (lines>1 ? (lines-1)*lineH : 0) + 4*scale;
+  }
+}
+
+function wrapText(text,x,y,maxWidth,lineHeight){
+  const words = text.split(' '); 
+  let line=''; 
+  let yy=y;
+  for(let i=0;i<words.length;i++){
+    const test = line + words[i] + ' ';
+    if(ctx.measureText(test).width > maxWidth && i>0){
+      ctx.fillText(line,x,yy); 
+      line = words[i] + ' '; 
+      yy += lineHeight;
+    } else {
+      line = test;
+    }
+  }
+  ctx.fillText(line,x,yy);
+}
+
+/* Micro charts with responsive scaling */
+function lineChart(data,x,y,w,h){
+  const scale = getScaleFactor();
+  clayPanel(x-12*scale,y-12*scale,w+24*scale,h+24*scale,16*scale);
+  ctx.save(); 
+  ctx.translate(x,y);
+  ctx.strokeStyle='rgba(255,255,255,.12)'; 
+  ctx.strokeRect(0,0,w,h);
+  const max = Math.max(...data), min = Math.min(...data);
+  const sx = w/(data.length-1), sy = h/((max-min)||1);
+  ctx.beginPath();
+  data.forEach((v,i)=>{ 
+    const px=i*sx, py=h-(v-min)*sy; 
+    i?ctx.lineTo(px,py):ctx.moveTo(px,py); 
+  });
+  ctx.strokeStyle=theme.ink; 
+  ctx.lineWidth=2*scale; 
+  ctx.stroke();
+  data.forEach((v,i)=>{ 
+    const px=i*sx, py=h-(v-min)*sy; 
+    ctx.beginPath(); 
+    ctx.arc(px,py,3*scale,0,Math.PI*2); 
+    ctx.fillStyle=theme.ink; 
+    ctx.fill(); 
+  });
+  ctx.restore();
+}
+
+function barChart(labels,vals,x,y,w,h){
+  const scale = getScaleFactor();
+  clayPanel(x-12*scale,y-12*scale,w+24*scale,h+48*scale,16*scale);
+  ctx.save(); 
+  ctx.translate(x,y);
+  ctx.strokeStyle='rgba(255,255,255,.12)'; 
+  ctx.strokeRect(0,0,w,h);
+  const n=vals.length, band=w/n, bw=band*0.6, max=Math.max(...vals,1);
+  ctx.textAlign='center'; 
+  ctx.font=(12*scale)+'px system-ui, Inter, sans-serif';
+  labels.forEach((lab,i)=>{
+    const vx=i*band + (band-bw)/2;
+    const bh = h*(vals[i]/max);
+    ctx.fillStyle='rgba(255,255,255,.9)'; 
+    ctx.fillRect(vx, h-bh, bw, bh);
+    ctx.fillStyle='rgba(255,255,255,.6)'; 
+    ctx.fillText(lab, vx+bw/2, h+16*scale);
+  });
+  ctx.restore();
+}
+
+function pie(parts,x,y,r){
+  const scale = getScaleFactor();
+  clayPanel(x-r-12*scale,y-r-12*scale, r*2+24*scale, r*2+24*scale, r+16*scale);
+  let sum = parts.reduce((a,b)=>a+b.v,0), a0=-Math.PI/2;
+  parts.forEach((p,i)=>{
+    const a1=a0 + 2*Math.PI*(p.v/sum);
+    ctx.beginPath(); 
+    ctx.moveTo(x,y); 
+    ctx.arc(x,y,r,a0,a1); 
+    ctx.closePath();
+    ctx.fillStyle=['#e9ecf1','#b9c1d0','#8ea3c7','#6f88bb','#5874b2'][i%5]; 
+    ctx.globalAlpha=.95; 
+    ctx.fill(); 
+    ctx.globalAlpha=1; 
+    a0=a1;
+  });
+  ctx.fillStyle=theme.mid; 
+  ctx.font=(12*scale)+'px system-ui, Inter, sans-serif'; 
+  ctx.textAlign='left';
+  parts.forEach((p,i)=> ctx.fillText(p.k+' '+p.v+'%', x+r+14*scale, y-r+16*scale+16*i*scale));
+  ctx.textAlign='start';
+}
+
+/* Data (from the attached guide) */
+const pagesData = [
+  { t:'Master TikTok 2025', sub:'Algorithm · Content · Monetization',
+    left:{
+      h:'Quickstart',
+      bullets:[
+        'Niche + audience → one-line promise.',
+        'Ship 2–3 videos/day for 30 days.',
+        'Hook → one idea → payoff → CTA.',
+        'Track: avg watch time, 100% completes, saves, shares.',
+        'Monetize: Shop, Rewards, Series, LIVE, deals.'
+      ]
+    },
+    right:{
+      h:'Signals',
+      bullets:['User interactions','Content info','User info']
+    },
+    charts:null
+  },
+  { t:'Algorithm overview',
+    bullets:[
+      'Retention dominates distribution.',
+      'Search matches explicit intent.',
+      'Consistency teaches the system.'
+    ],
+    heur:[
+      'Sub-30s: avg watch ≥ 70%; 100% completes ≥ 40%.',
+      '60–90s: avg watch ≥ 30–45s; 100% completes ≥ 20%.'
+    ],
+    charts:true
+  },
+  { two:[
+    {h:'TikTok SEO', bullets:[
+      'Pick the exact query users type.',
+      'Show and say it in first 3 seconds.',
+      'Repeat in caption + 1–2 precise hashtags.',
+      'Show outcome first, then steps.'
+    ]},
+    {h:'Content OS', bullets:[
+      'Result-First Demo: outcome hook → 3 labeled steps → metric → CTA.',
+      'Myth → Method: contrarian line → 1 rule + quick demo.',
+      'Price-to-Value: side-by-side test with criteria.',
+      'Serial Story: open with last payoff, tease the next.'
+    ]}
+  ]},
+  { t:'Production',
+    bullets:[
+      'Frame: face upper third; lock exposure.',
+      'Edit: cuts every 0.7–1.2s until demo.',
+      'Text: 5–7 words per beat; high contrast.',
+      'Audio: prioritize clear voice.'
+    ],
+    cad:['2–3/day for 30 days.','A/B hooks on the same body.','Retire bottom 30%; clone top 20%.'],
+    gantt:true
+  },
+  { two:[
+    {h:'Monetization stack', bullets:[
+      'Creator Rewards: ≥1-min originals.',
+      'TikTok Shop: affiliate or own store.',
+      'Series: paywalled collections.',
+      'LIVE: gifts and subscriptions.',
+      'Brand deals via Marketplace.',
+      'Pulse & Creative Challenge.',
+      'Off-platform: list, memberships, courses.'
+    ]},
+    {h:'Paid & compliance', bullets:[
+      'Spark Ads for proven posts.',
+      'Search Ads Toggle for how-tos.',
+      'TopView for launches only.',
+      'Disclosure: use in-app tools + clear "#ad".'
+    ]}
+  ]},
+  { two:[
+    {h:'Checklists', bullets:[
+      'Hook: payoff by 00:03; keyword on-screen; rapid visuals.',
+      'Edit: first cut ≤ 00:00.8; captions on; remove filler.',
+      'Caption: 1 keyword + 1 long-tail; one CTA; 1–2 tags.'
+    ]},
+    {h:'Example scripts', bullets:[
+      'How-To (60–75s): hook → steps 1-2-3 → payoff → CTA.',
+      'Product Demo (35–50s): "[Problem] in 10s? Watch." → demo → metric → CTA.',
+      'Myth-bust (1 min): "You were taught [myth]. Here\'s the math." → rule → CTA.'
+    ]}
+  ]},
+  { t:'Visual ad tiles', tiles:[
+    'Variation A · Learn More','Variation B · Shop Now','Variation C · Try Free',
+    'UGC · See Proof','How-To · Save','Offer · 20% Off'
+  ], tools:['TikTok Studio · CapCut · Creator Marketplace','Ads Manager · Effect House']},
+  { t:'30-day execution plan',
+    plan:[
+      'W1: pillars, 30 prompts, batch 15 vids, set Shop/offer.',
+      'W2: analyze top avg-watch and Search terms; clone; 2/day; LIVE x2.',
+      'W3: Series pilot or ≥1-min focus; test Spark Ads; enable Search Ads.',
+      'W4: offer page + Marketplace profile; retire bottom 30%; lock 3 formats.'
+    ]
+  },
+  { t:'Closing', notes:[
+    'Retention wins distribution. Search wins intent. Monetization is a stack.',
+    'Use ←/→, click Index (I), or type / to search. Save or Copy PNG anytime.'
+  ]}
+];
+
+/* Index & search metadata */
+const pageSummaries = [
+  ['Intro','Quickstart, signals'],
+  ['Algorithm','Heuristics, analytics'],
+  ['SEO + OS','Queries, formats'],
+  ['Production','Cadence, tests'],
+  ['Monetize + Ads','Rewards, Shop, compliance'],
+  ['Checklists + Scripts','How-To, Demo, Myth'],
+  ['Ad tiles + Tools','UGC variants, stacks'],
+  ['30-Day Plan','Weeks 1–4'],
+  ['Closing','Controls & notes']
+];
+
+/* Gantt data */
+const gantt = [
+  {name:'Define pillars', start:0, len:4},
+  {name:'Batch 15 videos', start:0, len:7},
+  {name:'Go LIVE x2', start:7, len:7},
+  {name:'Spark Ads test', start:14, len:7},
+  {name:'Series / ≥1-min focus', start:14, len:7},
+  {name:'Creator Marketplace', start:21, len:7},
+];
+
+/* Rendering */
+let index = 0;
+const fill = document.getElementById('fill');
+
+function bg(){
+  // big glass panel
+  ctx.clearRect(0,0,cv.width,cv.height);
+  const g = ctx.createLinearGradient(0,0,0,cv.height);
+  g.addColorStop(0, theme.bg2); 
+  g.addColorStop(1, theme.bg1);
+  ctx.fillStyle = g; 
+  ctx.fillRect(0,0,cv.width,cv.height);
+  
+  const scale = getScaleFactor();
+  clayPanel(24*scale,24*scale,cv.clientWidth-48*scale,cv.clientHeight-48*scale,26*scale);
+}
+
+function pill(t,x,y){ 
+  const scale = getScaleFactor();
+  ctx.fillStyle='rgba(255,255,255,.10)'; 
+  roundRect(x,y,160*scale,38*scale,18*scale,true,false); 
+  ctx.fillStyle=theme.ink; 
+  ctx.font=(12*scale)+'px system-ui, Inter, sans-serif'; 
+  ctx.fillText(t,x+14*scale,y+24*scale); 
+}
+
+function drawPage(){
+  fitDPI(); 
+  bg();
+  const page = pagesData[index];
+  const scale = getScaleFactor();
+  
+  if(index===0){
+    pill('Guide', 48*scale, 64*scale); 
+    title(page.t,48*scale,116*scale,46); 
+    if(page && page.sub){
+      drawParagraph(page.sub,48*scale,146*scale,900,26,16);
+    }
+    h2(page.left.h,48*scale,194*scale); 
+    bullets(page.left.bullets,48*scale,222*scale,560);
+    h2(page.right.h,680*scale,194*scale); 
+    bullets(page.right.bullets,680*scale,222*scale,520);
+  }
+  else if(index===1){
+    title('Algorithm overview',48*scale,100*scale,38);
+    bullets(page.bullets,48*scale,132*scale,560);
+    h2('Heuristics',48*scale,236*scale); 
+    bullets(page.heur,48*scale,264*scale,560);
+    h2('Analytics snapshot',680*scale,100*scale);
+    lineChart([21,23,24,22,26,28,29,27,30,33,31,34,36,38],680*scale,120*scale,520*scale,130*scale);
+    barChart(['<30s','60–90s'],[0.45,0.24],680*scale,270*scale,520*scale,120*scale);
+    pie([{k:'For You',v:62},{k:'Search',v:24},{k:'Profile',v:8},{k:'Other',v:6}],940*scale,520*scale,90*scale);
+  }
+  else if(index===2){
+    title('TikTok SEO',48*scale,100*scale,36);
+    bullets(page.two[0].bullets,48*scale,132*scale,560);
+    title('Content OS',680*scale,100*scale,36);
+    bullets(page.two[1].bullets,680*scale,132*scale,520);
+  }
+  else if(index===3){
+    title('Production',48*scale,100*scale,36); 
+    bullets(page.bullets,48*scale,132*scale,560);
+    h2('Cadence & tests',48*scale,238*scale); 
+    bullets(page.cad,48*scale,266*scale,560);
+    title('30-day plan',680*scale,100*scale,36);
+    // Gantt
+    const x=680*scale,y=132*scale,w=520*scale,h=170*scale, row=24*scale, max=28;
+    clayPanel(x-12*scale,y-12*scale,w+24*scale,h+84*scale,16*scale);
+    gantt.forEach((task,i)=>{
+      const yy = y + i*row;
+      const left = x + w*(task.start/max);
+      const barw = w*(task.len/max);
+      ctx.fillStyle=theme.ink; 
+      ctx.fillRect(left, yy, barw, 14*scale);
+      ctx.fillStyle=theme.mid; 
+      ctx.font=(12*scale)+'px system-ui, Inter, sans-serif'; 
+      ctx.fillText(task.name, x, yy+12*scale);
+    });
+  }
+  else if(index===4){
+    title('Monetization stack',48*scale,100*scale,36); 
+    bullets(page.two[0].bullets,48*scale,132*scale,560);
+    title('Paid amplification & compliance',680*scale,100*scale,34); 
+    bullets(page.two[1].bullets,680*scale,132*scale,520);
+  }
+  else if(index===5){
+    title('Checklists',48*scale,100*scale,36); 
+    bullets(page.two[0].bullets,48*scale,132*scale,560);
+    title('Example scripts',680*scale,100*scale,36); 
+    bullets(page.two[1].bullets,680*scale,132*scale,520);
+  }
+  else if(index===6){
+    title('Visual ad mockups',48*scale,100*scale,36);
+    const tiles = page.tiles; 
+    const x0=48*scale,y0=132*scale,w=370*scale,h=150*scale,gap=20*scale;
+    tiles.forEach((t,idx)=>{
+      const col = idx%3, row = (idx/3|0);
+      const x = x0 + col*(w+gap), y = y0 + row*(h+gap);
+      clayPanel(x,y,w,h,18*scale);
+      ctx.fillStyle='rgba(0,0,0,.5)'; 
+      roundRect(x+12*scale,y+h-44*scale,170*scale,32*scale,10*scale,true,false);
+      ctx.fillStyle=theme.ink; 
+      ctx.font='700 '+(14*scale)+'px system-ui, Inter, sans-serif'; 
+      ctx.fillText(t,x+22*scale,y+h-22*scale);
+    });
+    title('Tool stack',680*scale,470*scale,34); 
+    bullets(page.tools,680*scale,502*scale,520);
+  }
+  else if(index===7){
+    title('30-day execution plan',48*scale,100*scale,36);
+    bullets(page.plan,48*scale,132*scale,1080);
+  }
+  else {
+    title('Closing',48*scale,100*scale,36);
+    page.notes.forEach((txt,i)=> drawParagraph(txt,48*scale,132*scale+i*34*scale,1080,26,18));
+  }
+  
+  // progress
+  document.getElementById('pnum').textContent = (index+1)+' / '+pagesData.length;
+  document.getElementById('go').value = index+1;
+  document.getElementById('fill').style.width = ((index)/(pagesData.length-1))*100+'%';
+}
+
+function next(){ 
+  index = Math.min(index+1, pagesData.length-1); 
+  drawPage(); 
+}
+
+function prev(){ 
+  index = Math.max(index-1, 0); 
+  drawPage(); 
+}
+
+/* Controls */
+const $ = id=>document.getElementById(id);
+$('next').onclick = next; 
+$('prev').onclick = prev;
+
+$('save').onclick = ()=>{ 
+  const a=document.createElement('a'); 
+  a.href=cv.toDataURL('image/png'); 
+  a.download='tiktok-'+(index+1)+'.png'; 
+  a.click(); 
+};
+
+$('copy').onclick = async ()=>{
+  try{ 
+    const blob= await (await fetch(cv.toDataURL('image/png'))).blob();
+    await navigator.clipboard.write([new ClipboardItem({'image/png': blob})]); 
+    $('copy').textContent='Copied'; 
+    setTimeout(()=> $('copy').textContent='Copy',1200);
+  }catch(e){ 
+    alert('Clipboard not available'); 
+  }
+};
+
+$('go').addEventListener('change', e=>{ 
+  const v=Math.max(1,Math.min(pagesData.length, +e.target.value||1)); 
+  index=v-1; 
+  drawPage(); 
+});
+
+/* Keyboard & pointer */
+addEventListener('keydown',e=>{
+  if(e.key==='ArrowRight') next();
+  else if(e.key==='ArrowLeft') prev();
+  else if(e.key.toLowerCase()==='i') toggleIndex();
+  else if(e.key==='/'){ 
+    e.preventDefault(); 
+    $('q').focus(); 
+  }
+});
+
+let startX=null; 
+cv.addEventListener('pointerdown',e=> startX=e.clientX);
+cv.addEventListener('pointerup',e=>{ 
+  if(startX==null) return; 
+  const dx=e.clientX-startX; 
+  if(Math.abs(dx)>40) dx<0?next():prev(); 
+  startX=null; 
+});
+
+/* Index & search */
+const indexGrid = $('index'), indexBtn=$('indexBtn');
+
+function buildIndex(items){
+  indexGrid.innerHTML='';
+  items.forEach((it)=>{
+    const d=document.createElement('div'); 
+    d.className='thumb'; 
+    d.onclick=()=>{ 
+      index=it.index; 
+      toggleIndex(false); 
+      drawPage(); 
+    };
+    d.innerHTML = `<h4>${it.index+1}. ${it.title}</h4><p>${it.summary}</p>`;
+    indexGrid.appendChild(d);
+  });
+}
+
+function toggleIndex(force){
+  if(typeof force==='boolean'){ 
+    indexGrid.style.display = force?'grid':'none'; 
+    return; 
+  }
+  indexGrid.style.display = (indexGrid.style.display==='grid'?'none':'grid');
+}
+
+indexBtn.onclick=()=>toggleIndex();
+
+const indexedSummaries = pageSummaries.map((entry, idx)=>({
+  index: idx,
+  title: entry[0],
+  summary: entry[1]
+}));
+
+buildIndex(indexedSummaries);
+
+$('q').addEventListener('input', e=>{
+  const q = e.target.value.toLowerCase().trim();
+  if(!q){ 
+    buildIndex(indexedSummaries); 
+    return; 
+  }
+  const filtered = indexedSummaries.filter(item=>{
+    return (item.title+' '+item.summary).toLowerCase().includes(q);
+  });
+  if(filtered.length===0){
+    indexGrid.innerHTML = '<p class="chip">No matches</p>';
+    return;
+  }
+  buildIndex(filtered.map(item=>({
+    index: item.index,
+    title: item.title,
+    summary: item.summary+' — match'
+  })));
+});
+
+/* Initial render */
+addEventListener('load', drawPage);
+</script>
+</body>
+</html>
