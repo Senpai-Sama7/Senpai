@@ -1,0 +1,56 @@
+[
+  {
+    "id": "F1",
+    "feature": "Side navigation buttons swap dashboard views",
+    "command": "Manual: open index.html in a browser, click the 'Content OS' side button",
+    "expected": "Content OS cards replace the home grid while the Content OS button gains the active outline",
+    "status": "UNVERIFIED",
+    "evidence": null,
+    "notes": "Requires interactive browser to observe DOM state"
+  },
+  {
+    "id": "F2",
+    "feature": "Header tabs toggle between Overview, Analytics, and Ads",
+    "command": "Manual: click the Analytics tab in the sticky header",
+    "expected": "Analytics tab highlights and the analytics canvas grid becomes visible",
+    "status": "UNVERIFIED",
+    "evidence": null,
+    "notes": "Needs browser rendering"
+  },
+  {
+    "id": "F3",
+    "feature": "Line, bar, and pie charts render inside their canvases",
+    "command": "Manual: load the page and inspect the three canvases on the Home view",
+    "expected": "Each canvas paints the corresponding chart with the provided dataset",
+    "status": "UNVERIFIED",
+    "evidence": null,
+    "notes": "Canvas drawing requires browser context"
+  },
+  {
+    "id": "F4",
+    "feature": "30-day execution gantt timelines draw in Analytics and Plan views",
+    "command": "Manual: open Analytics tab then 30-Day Plan section",
+    "expected": "Both canvases show identical horizontal task bars aligned to the 28-day scale",
+    "status": "UNVERIFIED",
+    "evidence": null,
+    "notes": "Needs DOM canvas rendering"
+  },
+  {
+    "id": "F5",
+    "feature": "Layout collapses to single column side panel below 980px width",
+    "command": "Manual: shrink viewport under 980px",
+    "expected": "Left nav stacks above content and cards span wider grid",
+    "status": "UNVERIFIED",
+    "evidence": null,
+    "notes": "Responsive behavior requires browser resizing"
+  },
+  {
+    "id": "F6",
+    "feature": "Hidden textual reference provides full transcript for accessibility",
+    "command": "Manual: inspect #full-guide element in DOM or via screen reader",
+    "expected": "Section contains numbered guidance matching the written transcript while remaining visually hidden",
+    "status": "UNVERIFIED",
+    "evidence": null,
+    "notes": "Needs accessibility tooling to confirm"
+  }
+]

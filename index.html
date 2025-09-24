@@ -1,0 +1,459 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Master TikTok 2025 — Dark Neon Guide</title>
+<style>
+:root{--bg:#0b0f14;--panel:#101826;--ink:#E9EEF7;--ink-dim:rgba(233,238,247,.7);--line:rgba(255,255,255,.08);--brand:#8A5CFF;--brand-2:#00D1B2;}
+*{box-sizing:border-box} html,body{height:100%}
+body{margin:0;background:radial-gradient(1200px 800px at 80% -10%, rgba(138,92,255,.20), transparent),radial-gradient(900px 700px at -10% 90%, rgba(0,209,178,.15), transparent),var(--bg);color:var(--ink);font-family:Inter,system-ui,-apple-system,'Segoe UI',Roboto,Arial,sans-serif}
+.shell{display:grid;grid-template-columns:280px 1fr;min-height:100%}
+.side{position:sticky;top:0;height:100vh;padding:22px;background:linear-gradient(180deg,rgba(255,255,255,.04),rgba(255,255,255,.02));border-right:1px solid var(--line);backdrop-filter:blur(16px)}
+.brand{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:.3px;font-size:18px}
+.dot{width:28px;height:28px;border-radius:50%;background:radial-gradient(circle at 30% 30%, #fff, #fff0 45%),radial-gradient(120% 120% at 50% 120%, rgba(138,92,255,.8), rgba(0,0,0,0));box-shadow:0 0 24px rgba(138,92,255,.45), inset 0 0 24px rgba(138,92,255,.45)}
+.nav{margin-top:18px;display:grid;gap:10px}
+.nav button{text-align:left;padding:10px 12px;border-radius:12px;border:1px solid var(--line);color:var(--ink);background:linear-gradient(180deg,rgba(255,255,255,.03),rgba(255,255,255,.02));cursor:pointer}
+.nav button.active{outline:2px solid rgba(138,92,255,.65);box-shadow:0 0 0 4px rgba(138,92,255,.12) inset}
+.main{padding:22px}
+.hdr{position:sticky;top:0;z-index:2;padding:12px 16px;margin:-22px -22px 18px;border-bottom:1px solid var(--line);background:rgba(10,14,22,.45);backdrop-filter:blur(14px);display:flex;align-items:center;justify-content:space-between;gap:12px}
+.tabs{display:flex;gap:10px}
+.tabs button{padding:8px 12px;border-radius:10px;border:1px solid var(--line);background:linear-gradient(180deg,rgba(255,255,255,.04),rgba(255,255,255,.02));color:var(--ink);cursor:pointer}
+.tabs button.active{background:linear-gradient(180deg,rgba(138,92,255,.28),rgba(0,0,0,0));border-color:rgba(138,92,255,.45)}
+.grid{display:grid;grid-template-columns:repeat(12,1fr);gap:16px}
+.card{grid-column:span 6;min-height:200px;border:1px solid var(--line);border-radius:16px;background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.02));backdrop-filter:blur(16px);padding:16px;position:relative;overflow:hidden}
+.card.s12{grid-column:span 12}.card.s8{grid-column:span 8}.card.s6{grid-column:span 6}.card.s4{grid-column:span 4}.card.s3{grid-column:span 3}
+.card .title{font-weight:800;margin-bottom:6px}.muted{color:var(--ink-dim);font-size:12px}
+.kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:6px}.kpis .pill{border:1px solid var(--line);border-radius:12px;padding:10px}
+canvas{width:100%;height:160px;border-radius:12px;background:rgba(255,255,255,.03);border:1px solid var(--line)}
+@media(max-width:980px){.shell{grid-template-columns:1fr}.side{position:relative;height:auto}.grid{grid-template-columns:repeat(6,1fr)}.card.s4{grid-column:span 6}}
+.hidden{display:none}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+</style>
+</head>
+<body>
+<div class="shell">
+  <aside class="side">
+    <div class="brand"><div class="dot"></div> Master TikTok</div>
+    <div class="nav">
+      <button class="active" data-tab="home">Home</button>
+      <button data-tab="content">Content OS</button>
+      <button data-tab="seo">TikTok SEO</button>
+      <button data-tab="monetize">Monetization</button>
+      <button data-tab="plan">30‑Day Plan</button>
+      <button data-tab="check">Checklists</button>
+    </div>
+  </aside>
+  <main class="main">
+    <div class="hdr"><div><strong>Dark‑Neon Guide</strong> <span class="muted">App‑style dashboard</span></div>
+      <div class="tabs"><button class="active" data-tab="home">Overview</button><button data-tab="analytics">Analytics</button><button data-tab="ads">Ads</button></div>
+    </div>
+
+    <section class="view" id="home">
+      <div class="grid">
+        <div class="card s4">
+          <div class="title">Quickstart</div>
+          <ul class="muted"><li>Niche + audience → one‑line promise</li><li>2–3 posts/day × 30 days</li><li>Hook → 1 idea → payoff → 1 CTA</li></ul>
+          <div class="kpis">
+            <div class="pill"><div class="muted">Watch Time</div><div class="title">38s</div></div>
+            <div class="pill"><div class="muted">Full Views</div><div class="title">29%</div></div>
+            <div class="pill"><div class="muted">Shares</div><div class="title">+18%</div></div>
+          </div>
+        </div>
+        <div class="card s8"><div class="title">Average Watch Time — last 14 posts</div><canvas id="line"></canvas></div>
+        <div class="card s6"><div class="title">100% Completion Rate</div><canvas id="bars"></canvas></div>
+        <div class="card s6"><div class="title">Traffic Sources</div><canvas id="pie"></canvas></div>
+      </div>
+    </section>
+
+    <section class="view hidden" id="analytics">
+      <div class="grid">
+        <div class="card s12"><div class="title">Signals that move reach</div>
+          <ul class="muted"><li>User interactions</li><li>Content info</li><li>User info</li></ul>
+        </div>
+        <div class="card s4"><div class="title">Heuristics</div>
+          <ul class="muted"><li>&lt;30s: AWT ≥ 70%; 100% ≥ 40%</li><li>60–90s: AWT ≥ 30–45s; 100% ≥ 20%</li></ul>
+        </div>
+        <div class="card s8"><div class="title">30‑Day Execution Timeline</div><canvas id="gantt"></canvas></div>
+      </div>
+    </section>
+
+    <section class="view hidden" id="content">
+      <div class="grid">
+        <div class="card s6"><div class="title">Result‑First Demo</div><div class="muted">Outcome hook → 3 labeled steps → metric → CTA.</div></div>
+        <div class="card s6"><div class="title">Myth → Method</div><div class="muted">Contrarian line → 1 rule + quick demo.</div></div>
+        <div class="card s6"><div class="title">Price‑to‑Value</div><div class="muted">Side‑by‑side test with criteria labels.</div></div>
+        <div class="card s6"><div class="title">Serial Story</div><div class="muted">Open with last payoff. Tease the next.</div></div>
+      </div>
+    </section>
+
+    <section class="view hidden" id="seo">
+      <div class="grid"><div class="card s12"><div class="title">TikTok SEO</div>
+        <ol class="muted"><li>Pick the exact query users type</li><li>Show and say it in first 3s</li><li>Repeat in caption and 1–2 precise hashtags</li><li>Show outcome first, then steps</li></ol>
+      </div></div>
+    </section>
+
+    <section class="view hidden" id="monetize">
+      <div class="grid">
+        <div class="card s3"><div class="title">Creator Rewards</div><div class="muted">≥1‑min originals.</div></div>
+        <div class="card s3"><div class="title">TikTok Shop</div><div class="muted">Affiliate or own store.</div></div>
+        <div class="card s3"><div class="title">Series</div><div class="muted">Paywalled collections.</div></div>
+        <div class="card s3"><div class="title">LIVE</div><div class="muted">Gifts and subscriptions.</div></div>
+        <div class="card s3"><div class="title">Marketplace</div><div class="muted">Brand deals.</div></div>
+        <div class="card s3"><div class="title">Pulse</div><div class="muted">Revenue share.</div></div>
+        <div class="card s3"><div class="title">Challenge</div><div class="muted">UGC briefs.</div></div>
+        <div class="card s3"><div class="title">Off‑platform</div><div class="muted">List, memberships, courses.</div></div>
+      </div>
+    </section>
+
+    <section class="view hidden" id="plan">
+      <div class="grid"><div class="card s12"><div class="title">30‑Day Plan</div><canvas id="plan"></canvas></div></div>
+    </section>
+
+    <section class="view hidden" id="check">
+      <div class="grid">
+        <div class="card s4"><div class="title">Hook</div><div class="muted">Payoff by 00:03 · keyword on‑screen · rapid visuals.</div></div>
+        <div class="card s4"><div class="title">Edit</div><div class="muted">First cut ≤ 00:00.8 · captions on · remove filler.</div></div>
+        <div class="card s4"><div class="title">Caption</div><div class="muted">1 keyword + 1 long‑tail · one CTA · 1–2 tags.</div></div>
+      </div>
+    </section>
+
+    <section class="view hidden" id="ads">
+      <div class="grid">
+        <div class="card s6"><div class="title">Spark Ads</div><div class="muted">Boost proven posts. Keep organic equity.</div></div>
+        <div class="card s6"><div class="title">Search Ads Toggle</div><div class="muted">Capture how‑to intent.</div></div>
+        <div class="card s12"><div class="title">Visual Ad Concepts</div><div class="kpis"><div class="pill">Variation A · Learn More</div><div class="pill">Variation B · Shop Now</div><div class="pill">Variation C · Try Free</div></div></div>
+      </div>
+    </section>
+  </main>
+</div>
+<section class="sr-only" id="full-guide" aria-label="Full textual reference">
+  <h1>Master TikTok 2025: Algorithm, Content, and Monetization</h1>
+  <h2>0) Quickstart</h2>
+  <ul>
+    <li>Niche + audience = one-line promise.</li>
+    <li>Ship 2–3 videos/day for 30 days.</li>
+    <li>Each video: 3 second hook → one idea → strong payoff → one call to action.</li>
+    <li>Measure: average watch time, 100% completions, saves, shares.</li>
+    <li>Monetize in parallel: Shop affiliate, Creator Rewards for ≥1 minute videos, Series, LIVE, brand deals.</li>
+  </ul>
+  <h2>1) How TikTok recommends content</h2>
+  <p>Three signal groups drive distribution:</p>
+  <ul>
+    <li>User interactions: watches, rewatches, likes, shares, comments, profile visits.</li>
+    <li>Content info: captions and keywords, sounds, hashtags, total views, publish region.</li>
+    <li>User info: device, language, time zone.</li>
+  </ul>
+  <p>User interactions carry the most weight in feeds. Query match carries the most weight in Search.</p>
+  <p>Implication: optimize for retention first, then shares and saves, then keywords.</p>
+  <h2>2) 2025 algorithm levers you control</h2>
+  <ul>
+    <li>First 3 seconds: state the payoff or show the result immediately.</li>
+    <li>Search value: answer explicit questions and include the exact query on-screen and in captions.</li>
+    <li>Topic clustering: stay in tight themes so the system predicts who to send you to next.</li>
+    <li>Consistency over spikes: frequent on-theme posts create more eligible inventory.</li>
+  </ul>
+  <h2>3) TikTok SEO</h2>
+  <ul>
+    <li>Choose a target query users would type. Put it in on-screen text in the first 3 seconds, in spoken words, in the caption, and in one or two precise hashtags.</li>
+    <li>Formats that rank: how to, X vs Y, checklists, recipes, step-by-step demos.</li>
+    <li>Show the outcome early to prove relevance.</li>
+    <li>Longer answers help Discovery and certain payouts.</li>
+  </ul>
+  <h2>4) Content OS: repeatable structures</h2>
+  <h3>A. Result-First Demo (30–90s)</h3>
+  <ul>
+    <li>Hook: result clip and 4–7 word headline.</li>
+    <li>Body: 3 steps with jump cuts and labels.</li>
+    <li>Payoff: before and after or metric.</li>
+    <li>CTA: “Comment ‘guide’ for the checklist.”</li>
+  </ul>
+  <h3>B. Myth → Method (45–75s)</h3>
+  <ul>
+    <li>Hook: “Most [niche] advice is wrong. Do this instead.”</li>
+    <li>Body: one counter-intuitive rule and demo.</li>
+    <li>CTA: “Save for when you try it.”</li>
+  </ul>
+  <h3>C. Price-to-Value Breakdown (45–60s)</h3>
+  <ul>
+    <li>Hook: “$49 vs $9 alternative. What’s the catch?”</li>
+    <li>Body: side-by-side test with criteria on-screen.</li>
+    <li>CTA: “Search ‘[product] test’ for all picks.”</li>
+  </ul>
+  <h3>D. Serial Story (3–5 parts, 45–90s each)</h3>
+  <ul>
+    <li>Open each episode with the last payoff.</li>
+    <li>Tease the next episode.</li>
+    <li>Group with playlists.</li>
+    <li>Consider a paywalled Series later.</li>
+  </ul>
+  <h2>5) Production</h2>
+  <ul>
+    <li>Framing: face at upper third, lock exposure, 0.8–1.0x zoom.</li>
+    <li>Editing: tight cuts every 0.7–1.2 seconds until the demo starts, auto-captions on.</li>
+    <li>On-screen text: one line per beat, 5–7 words, high contrast.</li>
+    <li>Audio: clear voice first, native sounds for distribution when relevant.</li>
+  </ul>
+  <h2>6) Posting cadence and testing</h2>
+  <ul>
+    <li>Post 2–3 per day for 30 days.</li>
+    <li>A/B hooks: record two opens for the same body, post both 2–6 hours apart.</li>
+    <li>Weekly cull: retire bottom 30 percent, clone top 20 percent with a new hook or angle.</li>
+  </ul>
+  <h2>7) Analytics</h2>
+  <p>Prioritize:</p>
+  <ol>
+    <li>Average watch time and percent watched full.</li>
+    <li>Shares and saves.</li>
+    <li>Traffic source split between For You and Search.</li>
+    <li>Search terms that drove plays.</li>
+  </ol>
+  <p>Heuristics:</p>
+  <ul>
+    <li>Sub 30 seconds: average watch time ≥ 70 percent of video length, 100 percent completion ≥ 40 percent.</li>
+    <li>60–90 seconds: average watch time ≥ 30–45 seconds, 100 percent completion ≥ 20 percent.</li>
+  </ul>
+  <h2>8) Monetization menu</h2>
+  <h3>A) Creator Rewards Program</h3>
+  <p>Pays for original videos over 1 minute weighted by originality, play duration, search value, and engagement.</p>
+  <h3>B) TikTok Shop</h3>
+  <p>Earn commission by linking products in videos and LIVE. Brands recruit creators through the affiliate system.</p>
+  <h3>C) Series</h3>
+  <p>Paywalled collections up to 80 videos, each 30 seconds to 20 minutes. Good for courses and deep dives.</p>
+  <h3>D) LIVE: Gifts and Subscriptions</h3>
+  <p>Viewers tip through Gifts. Eligible creators sell subscriptions for exclusive content.</p>
+  <h3>E) TikTok Pulse</h3>
+  <p>Revenue share next to top content. Treat as bonus income.</p>
+  <h3>F) Creative Challenge</h3>
+  <p>In-app brand briefs. Submit ad-style videos and get paid based on performance.</p>
+  <h3>G) Effect Creator Rewards</h3>
+  <p>Build AR effects and earn based on engagement thresholds.</p>
+  <h3>H) Creator Marketplace and brand deals</h3>
+  <p>Official hub for collaborations. Keep niche clear and outcomes visible.</p>
+  <h3>I) Off-platform</h3>
+  <p>Email list, memberships, courses. Use link in bio and pinned videos.</p>
+  <h2>9) Paid amplification</h2>
+  <ul>
+    <li>Spark Ads: boost your organic post so all engagement accrues to it. Use only after organic retention proves out.</li>
+    <li>Search Ads Toggle: capture people actively searching your topic.</li>
+    <li>TopView: use for launches and tentpoles only.</li>
+  </ul>
+  <h2>10) Compliance and disclosure</h2>
+  <ul>
+    <li>Use in-app branded content disclosures for products or partnerships.</li>
+    <li>Follow FTC Endorsement Guides. Use clear labels like “#ad” near the claim.</li>
+  </ul>
+  <h2>11) Regulatory watch in the United States</h2>
+  <p>Policy is evolving. As of mid 2025 a divestment deadline was set for September 17, 2025. Maintain a cross-platform presence and export data regularly.</p>
+  <h2>12) 30-day execution plan</h2>
+  <h3>Week 1</h3>
+  <ul>
+    <li>Define three content pillars.</li>
+    <li>Write 30 prompts.</li>
+    <li>Batch record 15 videos.</li>
+    <li>Open Shop affiliate or define your offer path.</li>
+  </ul>
+  <h3>Week 2</h3>
+  <ul>
+    <li>Analyze top 10 videos by average watch time and Search terms.</li>
+    <li>Clone best structures.</li>
+    <li>Keep 2 per day.</li>
+    <li>Go LIVE twice.</li>
+  </ul>
+  <h3>Week 3</h3>
+  <ul>
+    <li>Launch a Series pilot or focus on ≥1 minute Creator Rewards videos.</li>
+    <li>Test Spark Ads on two winners.</li>
+    <li>Enable Search Ads for how-to topics.</li>
+  </ul>
+  <h3>Week 4</h3>
+  <ul>
+    <li>Build a brand offer page and Creator Marketplace profile.</li>
+    <li>Retire bottom 30 percent.</li>
+    <li>Lock three repeatable formats.</li>
+  </ul>
+  <h2>13) Checklists</h2>
+  <h3>Hook</h3>
+  <ul>
+    <li>Payoff shown by 00:03.</li>
+    <li>Query keyword on-screen.</li>
+    <li>Visual change every ≤1.0 second until demo.</li>
+  </ul>
+  <h3>Edit</h3>
+  <ul>
+    <li>First cut at 00:00–00:00.8.</li>
+    <li>Auto-captions on and corrected.</li>
+    <li>Remove filler and add labels or arrows.</li>
+  </ul>
+  <h3>Caption</h3>
+  <ul>
+    <li>One primary keyword and one long tail.</li>
+    <li>One call to action.</li>
+    <li>One to two specific hashtags.</li>
+  </ul>
+  <h3>Monetization</h3>
+  <ul>
+    <li>One ≥1 minute original per week.</li>
+    <li>One Shop product test per pillar.</li>
+    <li>One LIVE block and one Series episode per week.</li>
+  </ul>
+  <h2>14) Example scripts</h2>
+  <h3>How-To, Search-first (60–75s)</h3>
+  <p>Hook: “Stop Googling this. Here’s the 3-step [result] that actually works.”</p>
+  <p>Steps: label 1, 2, 3 on-screen while doing them.</p>
+  <p>Payoff: show the outcome and say the exact query users should search next.</p>
+  <p>CTA: “Save this and type ‘guide’ if you want the checklist.”</p>
+  <h3>Product Demo, Shop-ready (35–50s)</h3>
+  <p>Hook: “[Problem] in 10 seconds? Watch.”</p>
+  <p>Demo: fast jump cuts and text “Step 1, 2, 3.”</p>
+  <p>Payoff: before and after with a metric.</p>
+  <p>CTA: “Link in video. Comment your use case.”</p>
+  <h3>Myth-bust, 1 minute</h3>
+  <p>Hook: “You were taught [myth]. Here’s the math.”</p>
+  <p>Body: one counter example with visual proof.</p>
+  <p>Payoff: concise rule.</p>
+  <p>CTA: “Follow for Part 2. Search ‘[topic]’ to see all.”</p>
+  <h2>15) Tool stack</h2>
+  <ul>
+    <li>TikTok Studio for creation, management, and analytics.</li>
+    <li>CapCut for fast editing and captions.</li>
+    <li>Creator Marketplace for brand deals.</li>
+    <li>Ads Manager for Spark and Search ads.</li>
+    <li>Effect House for AR effects.</li>
+  </ul>
+  <h2>16) FAQ</h2>
+  <p><strong>Do hashtags still matter?</strong> Yes, but keywords in on-screen text, speech, and captions matter more for Search.</p>
+  <p><strong>Short or long videos?</strong> Use both. Long form over 1 minute can earn payouts. Short clips seed reach.</p>
+  <p><strong>Should I boost posts?</strong> Only winners. Use Spark Ads so organic equity remains.</p>
+  <p><strong>Will disclosure hurt reach?</strong> No. Disclose properly using the in-app tools and clear labels.</p>
+  <p>Retention drives distribution. Search captures intent. Monetization is a stack, not a switch.</p>
+</section>
+<script>
+const navButtons=[...document.querySelectorAll('.nav button')];
+const tabButtons=[...document.querySelectorAll('.tabs button')];
+const views=[...document.querySelectorAll('.view')];
+let activeNav='home';
+function switchTo(tab,origin){
+  if(origin==='nav'){activeNav=tab;}
+  views.forEach(v=>{
+    const show=v.id===tab;
+    v.classList.toggle('hidden',!show);
+  });
+  navButtons.forEach(b=>b.classList.toggle('active',b.dataset.tab===activeNav));
+  tabButtons.forEach(b=>b.classList.toggle('active',b.dataset.tab===tab));
+}
+navButtons.forEach(b=>b.addEventListener('click',()=>switchTo(b.dataset.tab,'nav')));
+tabButtons.forEach(b=>b.addEventListener('click',()=>switchTo(b.dataset.tab,'tab')));
+function lineChart(id,data){
+  const ctx=document.getElementById(id).getContext('2d');
+  const w=ctx.canvas.width=ctx.canvas.clientWidth;
+  const h=ctx.canvas.height=160;
+  const mx=Math.max(...data);
+  const mn=Math.min(...data);
+  const sx=w/(data.length-1||1);
+  const sy=(h-16)/((mx-mn)||1);
+  ctx.clearRect(0,0,w,h);
+  ctx.strokeStyle='rgba(255,255,255,.25)';
+  ctx.strokeRect(.5,.5,w-1,h-1);
+  ctx.beginPath();
+  data.forEach((v,i)=>{
+    const x=i*sx;
+    const y=h-8-(v-mn)*sy;
+    if(i){ctx.lineTo(x,y);}else{ctx.moveTo(x,y);}
+  });
+  ctx.strokeStyle='#E9EEF7';
+  ctx.lineWidth=2;
+  ctx.stroke();
+  data.forEach((v,i)=>{
+    const x=i*sx;
+    const y=h-8-(v-mn)*sy;
+    ctx.beginPath();
+    ctx.arc(x,y,3,0,6.283);
+    ctx.fillStyle='#E9EEF7';
+    ctx.fill();
+  });
+}
+function bars(id,labels,vals){
+  const ctx=document.getElementById(id).getContext('2d');
+  const w=ctx.canvas.width=ctx.canvas.clientWidth;
+  const h=ctx.canvas.height=160;
+  const band=w/(vals.length||1);
+  const bw=band*0.6;
+  const vmax=Math.max(...vals,1);
+  ctx.clearRect(0,0,w,h);
+  ctx.strokeStyle='rgba(255,255,255,.25)';
+  ctx.strokeRect(.5,.5,w-1,h-1);
+  vals.forEach((v,i)=>{
+    const x=i*band+(band-bw)/2;
+    const bh=(h-16)*(v/vmax);
+    ctx.fillStyle='#E9EEF7';
+    ctx.fillRect(x,h-8-bh,bw,bh);
+    ctx.fillStyle='rgba(233,238,247,.8)';
+    ctx.font='12px Inter,sans-serif';
+    ctx.textAlign='center';
+    ctx.fillText(labels[i],x+bw/2,h-4);
+    ctx.fillText(Math.round(v*100)+'%',x+bw/2,Math.max(16,h-12-bh));
+  });
+}
+function pie(id,parts){
+  const ctx=document.getElementById(id).getContext('2d');
+  const w=ctx.canvas.width=ctx.canvas.clientWidth;
+  const h=ctx.canvas.height=160;
+  const r=Math.min(w,h)/3;
+  const cx=w/3;
+  const cy=h/2;
+  const sum=parts.reduce((a,b)=>a+b.v,0)||1;
+  let a0=-Math.PI/2;
+  ctx.clearRect(0,0,w,h);
+  parts.forEach(p=>{
+    const a1=a0+2*Math.PI*(p.v/sum);
+    ctx.beginPath();
+    ctx.moveTo(cx,cy);
+    ctx.arc(cx,cy,r,a0,a1);
+    ctx.closePath();
+    ctx.fillStyle='#E9EEF7';
+    ctx.globalAlpha=.9;
+    ctx.fill();
+    ctx.globalAlpha=1;
+    a0=a1;
+  });
+  ctx.fillStyle='rgba(233,238,247,.8)';
+  ctx.font='12px Inter,sans-serif';
+  parts.forEach((p,i)=>{
+    ctx.fillText(p.k+' '+p.v+'%',w*0.6,26+16*i);
+  });
+}
+function gantt(id,tasks){
+  const ctx=document.getElementById(id).getContext('2d');
+  const w=ctx.canvas.width=ctx.canvas.clientWidth;
+  const h=ctx.canvas.height=160;
+  const max=28;
+  const row=22;
+  ctx.clearRect(0,0,w,h);
+  tasks.forEach((t,i)=>{
+    const y=10+i*row;
+    const left=20+(w-40)*(t.start/max);
+    const bw=(w-40)*(t.len/max);
+    ctx.fillStyle='#E9EEF7';
+    ctx.fillRect(left,y,bw,12);
+    ctx.fillStyle='rgba(233,238,247,.85)';
+    ctx.font='12px Inter,sans-serif';
+    ctx.fillText(t.name,20,y+10);
+  });
+}
+function drawAll(){
+  lineChart('line',[21,23,24,22,26,28,29,27,30,33,31,34,36,38]);
+  bars('bars',['<30s','60–90s'],[0.45,0.24]);
+  pie('pie',[{k:'For You',v:62},{k:'Search',v:24},{k:'Profile',v:8},{k:'Other',v:6}]);
+  const tasks=[
+    {name:'Define pillars',start:0,len:4},
+    {name:'Batch 15 videos',start:0,len:7},
+    {name:'Go LIVE x2',start:7,len:7},
+    {name:'Spark Ads test',start:14,len:7},
+    {name:'Series / ≥1-min focus',start:14,len:7},
+    {name:'Creator Marketplace',start:21,len:7}
+  ];
+  gantt('gantt',tasks);
+  gantt('plan',tasks);
+}
+window.addEventListener('load',()=>{drawAll();switchTo('home','nav');});
+window.addEventListener('resize',drawAll);
+</script>
+</body></html>

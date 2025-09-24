@@ -1,0 +1,6 @@
+- [ ] F1 Side navigation buttons swap dashboard views — UNVERIFIED (requires browser interaction)
+- [ ] F2 Header tabs toggle Overview/Analytics/Ads — UNVERIFIED (requires browser interaction)
+- [ ] F3 Home view charts render data sets — UNVERIFIED (requires browser interaction)
+- [ ] F4 Gantt timelines render in Analytics and Plan — UNVERIFIED (requires browser interaction)
+- [ ] F5 Responsive layout under 980px — UNVERIFIED (requires browser interaction)
+- [ ] F6 Screen-reader transcript available in #full-guide — UNVERIFIED (requires accessibility tooling)
